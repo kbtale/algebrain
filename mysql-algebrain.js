@@ -1,45 +1,44 @@
 // The algebrain-related MySQL functions
 
-const mysqldb = require("./mysql-handling"),
-	  conn = mysqldb.CrCnn("localhost","root","root","algebrain"); // Creates the connection
+const db = require("./sqlite-handling"),
+	  conn = db.CrCnn(); // Creates the SQLite connection
 
 function retrieveBranches (event){
-	mysqldb.MkSlQr(conn,'*','Branches',undefined,function(err,rslt) {
+	db.MkSlQr(conn,'*','Branches',undefined,function(err,rslt) {
 			if(err)
-				console.log("Failed query."); 	
+				console.error("Database Error (Branches):", err.message); 	
 			else {
-				console.log(rslt);
 				event.sender.send('complete',rslt);
 			}
 		});
 }
 
-function retrieveChapters (brId){
-	mysqldb.MkSlQr(conn,'ChapterID, ChName, ChDescription','Chapters','IdBranch = ' + brId,function(err,rslt) {
+function retrieveChapters (event, brId){
+	db.MkSlQr(conn,'ChapterID, ChName, ChDescription','Chapters','IdBranch = ' + brId,function(err,rslt) {
 			if(err)
-				console.log("Failed query."); 	
+				console.error("Database Error (Chapters):", err.message); 	
 			else {
-				return rslt;
+				event.sender.send('complete', rslt);
 			}
 		});
 }
 
-function retrieveSections (chId){
-	mysqldb.MkSlQr(conn,'sectionID, secName','Sections','IdChapter = ' + chId,function(err,rslt) {
+function retrieveSections (event, chId){
+	db.MkSlQr(conn,'sectionID, secName','Sections','IdChapter = ' + chId,function(err,rslt) {
 			if(err)
-				console.log("Failed query."); 	
+				console.error("Database Error (Sections):", err.message); 	
 			else {
-				return rslt;
+				event.sender.send('complete', rslt);
 			}
 		});
 }
 
-function retrieveSectionContent (secId){
-	mysqldb.MkSlQr(conn,'content','Sections','sectionID = ' + secId,function(err,rslt) {
+function retrieveSectionContent (event, secId){
+	db.MkSlQr(conn,'content','Sections','sectionID = ' + secId,function(err,rslt) {
 			if(err)
-				console.log("Failed query."); 	
+				console.error("Database Error (Content):", err.message); 	
 			else {
-				return rslt;
+				event.sender.send('complete', rslt);
 			}
 		});
 }

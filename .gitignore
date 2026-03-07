@@ -1,0 +1,24 @@
+# Node bits
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Electron bits
+dist/
+release/
+*.log
+
+# Database
+algebrain.db
+algebrain.db-journal
+
+# VS Code
+.vscode/
+
+# OS bits
+.DS_Store
+Thumbs.db
+
+# Agent bits
+.agents/
+skills-lock.json
