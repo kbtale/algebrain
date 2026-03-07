@@ -1,5 +1,4 @@
-// setStyles.js: Handles the creation and styling of UI elements
-function createCard(title, imageUrl) {
+function createCard(title, imageUrl, description) {
     const card = document.createElement('div');
     card.className = 'card';
     
@@ -7,11 +6,23 @@ function createCard(title, imageUrl) {
     img.src = imageUrl;
     img.alt = title;
     
+    // Fallback for missing images
+    img.onerror = () => {
+        img.style.display = 'none';
+    };
+    
     const h3 = document.createElement('h3');
     h3.textContent = title;
     
     card.appendChild(img);
     card.appendChild(h3);
+    
+    if (description) {
+        const p = document.createElement('p');
+        p.className = 'description';
+        p.textContent = description;
+        card.appendChild(p);
+    }
     
     return card;
 }

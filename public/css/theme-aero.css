@@ -91,6 +91,13 @@ p.tagline {
 .card h3 {
   font-weight: 500;
   font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.card .description {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  line-height: 1.4;
   margin: 0;
 }
 

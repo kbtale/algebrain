@@ -1,0 +1,32 @@
+-- Default seeding for Algebrain Branches
+DELETE FROM Branches;
+
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Fundamentals of Math', 'Focuses on ordering, rounding, and operating on whole numbers, decimals, integers, and fractions, alongside introductions to algebra and geometry.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Pre-Algebra', 'Explores operations with integers and rational numbers, solving equations, linear inequalities, and foundational geometry and probability.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Algebra I', 'The symbolic gateway focusing on linear equations, systems of equations, non-linear dynamics (polynomials), and quadratics.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Geometry', 'Focuses on visual logic, spatial reasoning, formal proofs, transformations, congruence, and right triangle trigonometry.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Algebra II', 'Covers complex systems, advanced modeling, polynomial arithmetic, complex numbers, logarithms, and matrices.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Mathematics I', 'Deepens the understanding of linear relationships, contrasts them with exponential phenomena, and introduces properties of congruent figures.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Mathematics II', 'Focuses on quadratic expressions, equations, and functions, alongside complex numbers and probability.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Mathematics III', 'Applies methods from probability and statistics, expanding into polynomial, rational, and radical functions, and extends trigonometry to general triangles.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Trigonometry', 'Bridges algebra and geometry by exploring relationships between triangle sides and angles, circular functions, and periodic functions.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Pre-Calculus', 'An analytical synthesis of algebra, geometry, and trigonometry, covering vectors, limits, sequences, and analytic geometry.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Enhanced Advanced Algebra & AP Precalculus', 'A blended approach combining advanced algebraic concepts with advanced pre-calculus preparation.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('AP Precalculus', 'Standardized, advanced preparation focusing heavily on modeling and functions.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Calculus', 'The study of change and accumulation, covering limits, derivatives, and integrals.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('AP Calculus AB', 'Advanced study of limits, derivatives, integrals, and the fundamental theorem of calculus.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('AP Calculus BC', 'Further advanced calculus extending to parametric equations, polar coordinates, and infinite series.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Multivariable Calculus', 'An extension of calculus dealing with functions of multiple variables.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Statistics and Probability', 'Deals with uncertainty, data variability, descriptive statistics, and inferential decision-making.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Statistical Reasoning', 'Focuses on practical applications of statistics and probability.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('AP Statistics', 'Advanced data collection, probability distributions, hypothesis testing, and regression analysis.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('AMDM', 'Uses mathematical and statistical methods to analyze and improve decisions in real-world scenarios.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Linear Algebra with Computer Science Applications', 'Focuses on matrices, vectors, and applications specific to computer science.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Discrete Mathematics', 'Covers logic, algorithms, and discrete structures.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Computer Science / Computer Math', 'Focuses on logic, algorithms, and computational structures.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Mathematical Modeling', 'Applying mathematics to solve real-world problems in science, finance, and everyday situations.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Consumer Math', 'Practical everyday math skills including budgeting, banking, taxes, and calculating costs for transportation and housing.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Financial Literacy', 'Focuses on mathematics for personal finance, economics, and real-world decision-making.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Math Applications', 'Using math to solve real-world problems.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('Game Theory', 'The mathematical study of strategic decision-making.');
+INSERT INTO Branches (BrName, BrDescription) VALUES ('College Readiness Mathematics', 'Preparation course bridging secondary mathematics with higher education expectations.');

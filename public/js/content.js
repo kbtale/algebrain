@@ -17,10 +17,14 @@ function showBranches (container){
 		container.innerHTML = '';
 		
 		for (let i = 0; i < branches.length; i++){
-			let imageURL = './images/img' + (1+i) + '.png'; 
-			let card = cardStyle[0](branches[i].BrName, imageURL);
-			let brId = branches[i].BranchID;
-			let brName = branches[i].BrName;
+            const branch = branches[i];
+            // Slugify name for image lookup and trim underscores
+            const slug = branch.BrName.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+			let imageURL = './images/' + slug + '.png'; 
+			
+            let card = cardStyle[0](branch.BrName, imageURL, branch.BrDescription);
+			let brId = branch.BranchID;
+			let brName = branch.BrName;
 			
 			card.setAttribute("brId", brId);
 			card.addEventListener('click', () => {

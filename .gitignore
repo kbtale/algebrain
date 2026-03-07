@@ -11,6 +11,7 @@ release/
 # Database
 algebrain.db
 algebrain.db-journal
+DATA.md
 
 # VS Code
 .vscode/
