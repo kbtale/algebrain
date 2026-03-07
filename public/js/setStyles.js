@@ -3,18 +3,15 @@ function createCard(title, imageUrl) {
     const card = document.createElement('div');
     card.className = 'card';
     
-    const h3 = document.createElement('h3');
-    h3.textContent = title;
-    
     const img = document.createElement('img');
     img.src = imageUrl;
     img.alt = title;
-    img.style.width = '100%';
-    img.style.borderRadius = '8px';
-    img.style.marginTop = '10px';
     
-    card.appendChild(h3);
+    const h3 = document.createElement('h3');
+    h3.textContent = title;
+    
     card.appendChild(img);
+    card.appendChild(h3);
     
     return card;
 }

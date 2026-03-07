@@ -8,14 +8,13 @@ const cardStyle = window.setCardStyle || {
     }
 };
 
-// Getting data
 function showBranches (container){
 	console.log("Loading branches...");
 	window.electronAPI.send('branches'); 
 	
-	window.electronAPI.on('complete', function (event, response){
+	window.electronAPI.once('complete', function (event, response){
 		const branches = response[0];
-		container.innerHTML = ''; // Clear container
+		container.innerHTML = '';
 		
 		for (let i = 0; i < branches.length; i++){
 			let imageURL = './images/img' + (1+i) + '.png'; 
@@ -40,7 +39,7 @@ function showChapters(container, brId, brName){
 	const listContainer = document.getElementById('chapters-list');
 
 	window.electronAPI.send('chapters', brId);
-	window.electronAPI.on('complete', function (event, response){
+	window.electronAPI.once('complete', function (event, response){
 		const chapters = response[0] || [];
 		listContainer.innerHTML = '';
 		

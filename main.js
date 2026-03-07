@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const dbLogic = require('./mysql-algebrain'); // This now uses SQLite
+const dbLogic = require('./db-logic');
 
 let mainWindow;
 
@@ -16,6 +16,10 @@ function createWindow() {
         }
     });
 
+    if (process.platform === 'win32' && typeof mainWindow.setBackgroundMaterial === 'function') {
+        mainWindow.setBackgroundMaterial('mica');
+    }
+
     mainWindow.loadFile(path.join(__dirname, 'public/index.html'));
 
     // Automatically open DevTools for debugging
@@ -26,7 +30,7 @@ function createWindow() {
     });
 }
 
-// IPC Handlers connecting to our SQLite logic
+// IPC Handlers
 ipcMain.on('branches', (event) => {
     dbLogic.retrieveBranches(event);
 });

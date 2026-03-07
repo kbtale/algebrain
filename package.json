@@ -1,21 +1,25 @@
 {
   "name": "algebrain",
   "version": "0.0.1",
-  "description": "A minimal application for learning Math",
+  "description": "Math learning tool built with Electron and SQLite.",
   "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "electron ."
   },
   "keywords": [
     "Math",
-    "algebra"
+    "Algebra",
+    "Electron",
+    "SQLite",
+    "Windows Aero"
   ],
   "author": "Carlos Bolívar",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^11.0.4"
+    "electron": "^40.8.0"
   },
   "dependencies": {
-    "sqlite3": "^5.1.7"
+    "sqlite3": "latest"
   }
 }
