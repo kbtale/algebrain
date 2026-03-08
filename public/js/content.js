@@ -8,6 +8,18 @@ const cardStyle = window.setCardStyle || {
     }
 };
 
+function createBackButton(container, callback) {
+    const btn = document.createElement('div');
+    btn.className = 'back-btn';
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+    btn.title = 'Back';
+    btn.onclick = () => {
+        container.innerHTML = '';
+        callback();
+    };
+    return btn;
+}
+
 function showBranches (container){
 	console.log("Loading branches...");
 	window.electronAPI.send('branches'); 
@@ -18,7 +30,6 @@ function showBranches (container){
 		
 		for (let i = 0; i < branches.length; i++){
             const branch = branches[i];
-            // Slugify name for image lookup and trim underscores
             const slug = branch.BrName.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 			let imageURL = './images/' + slug + '.png'; 
 			
@@ -28,7 +39,6 @@ function showBranches (container){
 			
 			card.setAttribute("brId", brId);
 			card.addEventListener('click', () => {
-				console.log("Clicked branch:", brName);
 				showChapters(container, brId, brName);
 			});
 			
@@ -38,9 +48,17 @@ function showBranches (container){
 }
 
 function showChapters(container, brId, brName){
-	console.log("Loading chapters for branch:", brId);
-	container.innerHTML = '<h2>' + brName + '</h2><div id="chapters-list">Loading chapters...</div>';
-	const listContainer = document.getElementById('chapters-list');
+	container.innerHTML = '';
+    container.appendChild(createBackButton(container, () => showBranches(container)));
+    
+    const header = document.createElement('h2');
+    header.textContent = brName;
+    container.appendChild(header);
+
+	const listContainer = document.createElement('div');
+    listContainer.id = 'chapters-list';
+    listContainer.innerHTML = 'Loading chapters...';
+    container.appendChild(listContainer);
 
 	window.electronAPI.send('chapters', brId);
 	window.electronAPI.once('complete', function (event, response){
@@ -48,21 +66,19 @@ function showChapters(container, brId, brName){
 		listContainer.innerHTML = '';
 		
 		if (chapters.length === 0) {
-			listContainer.innerHTML = '<p>No chapters found for this branch.</p>';
+			listContainer.innerHTML = '<div class="coming-soon"><h3>Coming Soon</h3><p>Content for this branch is under development.</p></div>';
 			return;
 		}
 
 		chapters.forEach(chapter => {
 			const div = document.createElement('div');
-			div.className = 'chapter-item';
-			div.style.padding = '10px';
-			div.style.borderBottom = '1px solid #ccc';
-			div.style.cursor = 'pointer';
-			div.innerHTML = `<strong>${chapter.ChName}</strong><p>${chapter.ChDescription || ''}</p>`;
+			div.className = 'card chapter-item';
+            div.style.textAlign = 'left';
+            div.style.alignItems = 'flex-start';
+			div.innerHTML = `<h3>${chapter.ChName}</h3><p class="description">${chapter.ChDescription || ''}</p>`;
 			
 			div.addEventListener('click', () => {
-				console.log("Clicked chapter:", chapter.ChName);
-				// showSections(container, chapter.ChapterID);
+				showSections(container, chapter.ChapterID, chapter.ChName, () => showChapters(container, brId, brName));
 			});
 			
 			listContainer.appendChild(div);
@@ -70,6 +86,17 @@ function showChapters(container, brId, brName){
 	});
 } 
 
-function showSections(container, chId){
-	// To be implemented
+function showSections(container, chId, chName, backCallback){
+	container.innerHTML = '';
+    container.appendChild(createBackButton(container, backCallback));
+
+    const header = document.createElement('h2');
+    header.textContent = chName;
+    container.appendChild(header);
+
+    const listContainer = document.createElement('div');
+    listContainer.id = 'sections-list';
+    listContainer.className = 'coming-soon';
+    listContainer.innerHTML = '<h3>Coming Soon</h3><p>Sections for this chapter are arriving shortly.</p>';
+    container.appendChild(listContainer);
 }
